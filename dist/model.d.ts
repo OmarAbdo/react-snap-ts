@@ -1,6 +1,6 @@
-/// <reference types="clean-css" />
 /// <reference types="node" />
-import puppeteer, { HTTPResponse, Page, PuppeteerLifeCycleEvent } from "puppeteer";
+/// <reference types="clean-css" />
+import { HTTPResponse, Page, PuppeteerLifeCycleEvent, Browser } from "puppeteer";
 import nativeFs from "fs";
 import { Options } from "html-minifier-terser";
 import type CleanCSS from "@types/clean-css";
@@ -73,7 +73,7 @@ export interface IReactSnapOptions {
     removeScriptTags?: boolean;
     ignoreHTTPSErrors?: boolean;
     cleanup?(): void;
-    cleanupBrowser?(browser: puppeteer.Browser): Promise<void>;
+    cleanupBrowser?(browser: Browser): Promise<void>;
     /**
      * @deprecated preloadResources option deprecated. Use preloadImages or cacheAjaxRequests
      */
@@ -91,16 +91,16 @@ export interface IReactSnapRunLogs {
     url: string;
     logs: any[][];
 }
-export declare type ReactSnapRunInfo = [string[], IReactSnapRunLogs[]];
+export type ReactSnapRunInfo = [string[], IReactSnapRunLogs[]];
 export interface ISaveAsParams {
-    page: puppeteer.Page;
+    page: Page;
     filePath: string;
     options: IReactSnapOptions;
     route: string;
     fs: typeof nativeFs;
 }
 export interface IEnableLoggingOptions {
-    page: puppeteer.Page;
+    page: Page;
     options: IReactSnapOptions;
     route: string;
     basePath: string;
@@ -113,11 +113,11 @@ export interface ICrawlParams {
     publicPath?: string;
     sourceDir: string;
     beforeFetch(params: {
-        page: puppeteer.Page;
+        page: Page;
         route: string;
     }): any;
     afterFetch(params: {
-        page: puppeteer.Page;
+        page: Page;
         route: string;
         addToQueue: (newUrl: string) => Promise<void>;
         logs: string[];
@@ -125,7 +125,7 @@ export interface ICrawlParams {
     onEnd(): void;
 }
 export interface IInlineCssParams {
-    page: puppeteer.Page;
+    page: Page;
     pageUrl: string;
     options: IReactSnapOptions;
     basePath: string;

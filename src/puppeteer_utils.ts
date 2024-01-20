@@ -319,8 +319,13 @@ export const crawl = async (opt: ICrawlParams): Promise<IReactSnapRunLogs[]> => 
 
     if (!shuttingDown && !skipExistingFile) {
       try {
-        // @ts-ignore
-        await page._client.send("ServiceWorker.disable");
+        await page.evaluate(() => {
+          navigator.serviceWorker.getRegistrations().then(registrations => {
+            registrations.forEach(registration => {
+              registration.unregister();
+            });
+          });
+        });
         if (options.basicAuth) {
           await page.setExtraHTTPHeaders({
             Authorization: `Basic ${Buffer.from(`${options.basicAuth.username}:${options.basicAuth.password}`).toString('base64')}`
