@@ -1,6 +1,6 @@
 {
   "name": "react-snap-ts",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A typescript implementation of react snap with some additional features and bug fixes",
   "main": "dist/index.js",
   "bin": {
