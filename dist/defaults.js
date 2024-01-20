@@ -105,11 +105,11 @@ const defaults = (userOptions) => {
         options.asyncScriptTags = options.asyncJs;
     }
     if (/\.(html|jpg|jpeg|png)$/.test(options.fileName)) {
-        console.log("🔥  fileName should be base, appropritate extension will be added");
+        console.log("🔥  fileName should be base, appropriate extension will be added");
         options.fileName = options.fileName.replace(/\.(html|jpg|jpeg|png)$/, "");
     }
     if (options.fixWebpackChunksIssue === true) {
-        console.log("🔥  fixWebpackChunksIssue - behaviour changed, valid options are CRA1, CRA2, Parcel, false");
+        console.log("🔥  fixWebpackChunksIssue - behavior changed, valid options are CRA1, CRA2, Parcel, false");
         options.fixWebpackChunksIssue = "CRA1";
     }
     const features = ["html", "png", "jpg", "jpeg"];
