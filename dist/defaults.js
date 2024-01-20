@@ -61,7 +61,7 @@ exports.defaultOptions = {
     processCss: undefined,
     leaveLinkCss: undefined,
     //# feature creeps to generate screenshots
-    saveAs: "html",
+    saveAs: "html", // options are "html", "png", "jpeg" as string or array
     fileName: "index",
     crawl: true,
     waitFor: false,

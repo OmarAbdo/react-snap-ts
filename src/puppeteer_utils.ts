@@ -1,4 +1,9 @@
-import puppeteer, {DEFAULT_INTERCEPT_RESOLUTION_PRIORITY, HTTPResponse, Puppeteer} from "puppeteer";
+import puppeteer, {
+  DEFAULT_INTERCEPT_RESOLUTION_PRIORITY,
+  HTTPResponse,
+  Puppeteer,
+  Page,
+} from "puppeteer";
 import {Cluster} from "puppeteer-cluster"
 import { addExtra, VanillaPuppeteer } from "puppeteer-extra";
 import blockResourcesPlugin from "puppeteer-extra-plugin-block-resources"
@@ -298,7 +303,7 @@ export const crawl = async (opt: ICrawlParams): Promise<IReactSnapRunLogs[]> => 
    * @param {string} pageUrl
    * @returns {Promise<UrlLogs>}
    */
-  const fetchPage = async (page: puppeteer.Page, pageUrl: string) => {
+  const fetchPage = async (page: Page, pageUrl: string) => {
     const route = pageUrl.replace(basePath, "");
     let skipExistingFile = false;
     const routePath = route.replace(/\//g, path.sep);
